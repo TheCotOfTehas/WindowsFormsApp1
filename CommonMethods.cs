@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySqlX.XDevAPI.Relational;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,8 @@ namespace WindowsFormsApp1
 {
     public class CommonMethods
     {
+        private static DataBaseSQLServer dataBase = new DataBaseSQLServer();
+
         public static List<DataGridViewTextBoxColumn> GetTable()
         {
             var result = new List<DataGridViewTextBoxColumn>();
@@ -43,6 +47,44 @@ namespace WindowsFormsApp1
             result.Add(columnStatusMy);
 
             return result;
+        }
+
+        public static void InitializeTable2(string name_, DataGridView DataGridView)
+        {
+            var boxColumns = CommonMethods.GetTable();
+            DataGridView.Columns.AddRange(boxColumns.ToArray());
+
+            dataBase.OpenConnecton();
+            var sqlConnection = dataBase.GetConnection();
+            string command = $"SELECT TOP (1000) [Id]\r\n ,[Name]\r\n ,[LengthMy]\r\n ,[WidthMy]\r\n ,[HeightMy]\r\n ,[StatusMy]\r\n  FROM [dbo].[{name_}]";
+            SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
+
+            var sqlDataReader = sqlCommand.ExecuteReader();
+
+
+            while (sqlDataReader.Read())
+            {
+                int id = Convert.ToInt32(sqlDataReader["Id"]);
+                string name = (string)sqlDataReader["Name"];
+                int lengthMy = Convert.ToInt32(sqlDataReader["LengthMy"]);
+                int widthMy = Convert.ToInt32(sqlDataReader["WidthMy"]);
+                int heightMy = Convert.ToInt32(sqlDataReader["HeightMy"]);
+                string statusMy = (string)sqlDataReader["StatusMy"];
+
+                var Id = new DataGridViewTextBoxCell() { Value = id };
+                var Name = new DataGridViewTextBoxCell() { Value = name };
+                var LengthMy = new DataGridViewTextBoxCell() { Value = lengthMy };
+                var WidthMy = new DataGridViewTextBoxCell() { Value = widthMy };
+                var HeightMy = new DataGridViewTextBoxCell() { Value = heightMy };
+                var StatusMy = new DataGridViewTextBoxCell() { Value = statusMy };
+
+                DataGridViewRow rowCurrent = new DataGridViewRow();
+                rowCurrent.Cells.AddRange(Id, Name, LengthMy, WidthMy, HeightMy, StatusMy);
+
+                DataGridView.Rows.Add(rowCurrent);
+            }
+
+            dataBase.CloseConnecton();
         }
     }
 }
