@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonMethods.cs" />
     <Compile Include="Form\Sold\AddSoldForm.cs">
       <SubType>Form</SubType>
     </Compile>

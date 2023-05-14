@@ -15,9 +15,10 @@ namespace WindowsFormsApp1
 {
     public partial class AdoptedForm : Form
     {
-        DataBaseSQLServer dataBase = new DataBaseSQLServer();
+        DataBaseSQLServer dataBase;
         public AdoptedForm()
         {
+            dataBase = new DataBaseSQLServer();
             InitializeComponent();
             InitializeTable("Adopted");
         }
@@ -31,30 +32,8 @@ namespace WindowsFormsApp1
 
         public void InitializeTable(string name_)
         {
-            DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
-            columnId.Name = "Id";
-            columnId.HeaderText = "Id";
-
-            DataGridViewTextBoxColumn columnName = new DataGridViewTextBoxColumn();
-            columnName.Name = "Name";
-            columnName.HeaderText = "Name";
-
-            DataGridViewTextBoxColumn columnLengthMy = new DataGridViewTextBoxColumn();
-            columnLengthMy.Name = "LengthMy";
-            columnLengthMy.HeaderText = "LengthMy";
-
-            DataGridViewTextBoxColumn columnWidthMy = new DataGridViewTextBoxColumn();
-            columnWidthMy.Name = "WidthMy";
-            columnWidthMy.HeaderText = "WidthMy";
-
-            DataGridViewTextBoxColumn columnHeightMy = new DataGridViewTextBoxColumn();
-            columnHeightMy.Name = "HeightMy";
-            columnHeightMy.HeaderText = "HeightMy";
-
-            DataGridViewTextBoxColumn columnStatusMy = new DataGridViewTextBoxColumn();
-            columnStatusMy.Name = "StatusMy";
-            columnStatusMy.HeaderText = "StatusMy";
-            Table.Columns.AddRange(columnId, columnName, columnLengthMy, columnWidthMy, columnHeightMy, columnStatusMy);
+            var boxColumns = CommonMethods.GetTable();
+            Table.Columns.AddRange(boxColumns.ToArray());
 
             dataBase.OpenConnecton();
             var sqlConnection = dataBase.GetConnection();
