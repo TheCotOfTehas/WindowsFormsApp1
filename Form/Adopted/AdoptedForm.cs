@@ -15,10 +15,8 @@ namespace WindowsFormsApp1
 {
     public partial class AdoptedForm : Form
     {
-        DataBaseSQLServer dataBase;
         public AdoptedForm()
         {
-            dataBase = new DataBaseSQLServer();
             InitializeComponent();
             InitializeTable("Adopted");
         }

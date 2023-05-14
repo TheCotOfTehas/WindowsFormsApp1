@@ -13,10 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class AddSoldForm : Form
     {
-        DataBaseSQLServer dataBase;
         public AddSoldForm()
         {
-            dataBase = new DataBaseSQLServer();
             InitializeComponent();
         }
 
@@ -39,11 +37,11 @@ namespace WindowsFormsApp1
             string command = $"INSERT {nameTable} ([Name], [LengthMy], [WidthMy], [HeightMy], [StatusMy])\r\n" +
                                         $"VALUES (N'{name}', {lengthMy}, {widthMy}, {heightMy},  N'{statusMy}')";
 
-            dataBase.OpenConnecton();
-            var sqlConnection = dataBase.GetConnection();
+            CommonMethods.dataBase.OpenConnecton();
+            var sqlConnection = CommonMethods.dataBase.GetConnection();
             SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
             sqlCommand.ExecuteNonQuery();
-            dataBase.CloseConnecton();
+            CommonMethods.dataBase.CloseConnecton();
 
             this.Hide();
             SoldForm startForm = new SoldForm();

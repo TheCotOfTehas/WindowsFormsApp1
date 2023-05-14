@@ -13,10 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class InStockForm : Form
     {
-        DataBaseSQLServer dataBase;
         public InStockForm()
         {
-            dataBase = new DataBaseSQLServer();
             InitializeComponent();
             InitializeTable("InStock");
         }

@@ -13,10 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class AddInStockForm : Form
     {
-        DataBaseSQLServer dataBase;
         public AddInStockForm()
         {
-            dataBase = new DataBaseSQLServer();
             InitializeComponent();
         }
         private void GoToStart_Click(object sender, EventArgs e)
@@ -37,11 +35,11 @@ namespace WindowsFormsApp1
             string command = $"INSERT {nameTable} ([Name], [LengthMy], [WidthMy], [HeightMy], [StatusMy])\r\n" +
                                         $"VALUES (N'{name}', {lengthMy}, {widthMy}, {heightMy},  N'{statusMy}')";
 
-            dataBase.OpenConnecton();
-            var sqlConnection = dataBase.GetConnection();
+            CommonMethods.dataBase.OpenConnecton();
+            var sqlConnection = CommonMethods.dataBase.GetConnection();
             SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
             sqlCommand.ExecuteNonQuery();
-            dataBase.CloseConnecton();
+            CommonMethods.dataBase.CloseConnecton();
 
             this.Hide();
             InStockForm startForm = new InStockForm();

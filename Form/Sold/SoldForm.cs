@@ -15,10 +15,8 @@ namespace WindowsFormsApp1
 {
     public partial class SoldForm : Form
     {
-        DataBaseSQLServer dataBase;
         public SoldForm()
         {
-            dataBase = new DataBaseSQLServer();
             InitializeComponent();
             InitializeTable("Sold");
         }

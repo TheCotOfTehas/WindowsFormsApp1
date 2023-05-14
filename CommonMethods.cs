@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
 {
     public class CommonMethods
     {
-        private static DataBaseSQLServer dataBase = new DataBaseSQLServer();
+        internal static DataBaseSQLServer dataBase = new DataBaseSQLServer();
 
         public static List<DataGridViewTextBoxColumn> GetTable()
         {
