@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -66,25 +66,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form\AdoptedForm.cs">
+    <Compile Include="Form\Sold\AddSoldForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\AdoptedForm.Designer.cs">
+    <Compile Include="Form\Sold\AddSoldForm.Designer.cs">
+      <DependentUpon>AddSoldForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\InStock\AddInStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\InStock\AddInStockForm.Designer.cs">
+      <DependentUpon>AddInStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Adopted\AddAdoptedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Adopted\AddAdoptedForm.Designer.cs">
+      <DependentUpon>AddAdoptedForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Adopted\AdoptedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Adopted\AdoptedForm.Designer.cs">
       <DependentUpon>AdoptedForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBaseSQLServer.cs" />
-    <Compile Include="Form\InStockForm.cs">
+    <Compile Include="Form\InStock\InStockForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\InStockForm.Designer.cs">
+    <Compile Include="Form\InStock\InStockForm.Designer.cs">
       <DependentUpon>InStockForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Form\SoldForm.cs">
+    <Compile Include="Form\Sold\SoldForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\SoldForm.Designer.cs">
+    <Compile Include="Form\Sold\SoldForm.Designer.cs">
       <DependentUpon>SoldForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\StartForm.cs">
@@ -94,10 +112,19 @@
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Starter.cs" />
-    <EmbeddedResource Include="Form\AdoptedForm.resx">
+    <EmbeddedResource Include="Form\Sold\AddSoldForm.resx">
+      <DependentUpon>AddSoldForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Adopted\AddAdoptedForm.resx">
+      <DependentUpon>AddAdoptedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Adopted\AdoptedForm.resx">
       <DependentUpon>AdoptedForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\InStockForm.resx">
+    <EmbeddedResource Include="Form\InStock\AddInStockForm.resx">
+      <DependentUpon>AddInStockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\InStock\InStockForm.resx">
       <DependentUpon>InStockForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -109,7 +136,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form\SoldForm.resx">
+    <EmbeddedResource Include="Form\Sold\SoldForm.resx">
       <DependentUpon>SoldForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\StartForm.resx">
@@ -141,6 +168,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -148,9 +178,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         public AdoptedForm()
         {
             InitializeComponent();
-            doSom();
+            InitializeTable("Adopted");
         }
 
         private void GoToStart_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             startForm.ShowDialog();
         }
 
-        public void doSom()
+        public void InitializeTable(string name_)
         {
             DataGridViewTextBoxColumn columnId = new DataGridViewTextBoxColumn();
             columnId.Name = "Id";
@@ -54,11 +54,11 @@ namespace WindowsFormsApp1
             DataGridViewTextBoxColumn columnStatusMy = new DataGridViewTextBoxColumn();
             columnStatusMy.Name = "StatusMy";
             columnStatusMy.HeaderText = "StatusMy";
-
             Table.Columns.AddRange(columnId, columnName, columnLengthMy, columnWidthMy, columnHeightMy, columnStatusMy);
+
             dataBase.OpenConnecton();
             var sqlConnection = dataBase.GetConnection();
-            string command = $"SELECT TOP (1000) [Id]\r\n      ,[Name]\r\n      ,[LengthMy]\r\n      ,[WidthMy]\r\n      ,[HeightMy]\r\n      ,[StatusMy]\r\n  FROM [dbo].[Customers]";
+            string command = $"SELECT TOP (1000) [Id]\r\n ,[Name]\r\n ,[LengthMy]\r\n ,[WidthMy]\r\n ,[HeightMy]\r\n ,[StatusMy]\r\n  FROM [dbo].[{name_}]";
             SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
 
             var sqlDataReader = sqlCommand.ExecuteReader();
@@ -96,38 +96,11 @@ namespace WindowsFormsApp1
             dataBase.CloseConnecton();
         }
 
-        public IEnumerable<string> GetCommandInsert(string nameTable)
+        private void buttoGoAddAdoptedForm(object sender, EventArgs e)
         {
-            int id = 1;
-            string name = "";
-            int lengthMy = 1;
-            int widthMy = 1;
-            int heightMy = 1;
-            string statusMy = "";
-
-            string command = $"INSERT [{nameTable}] ([Name], [LengthMy], [WidthMy], [HeightMy], [StatusMy])\r\n" +
-                             $"VALUES (N'{name}', {lengthMy}, {widthMy}, {heightMy},  N'{statusMy}')";
-
-            yield return command;
-        }
-
-        private void butto_Add(object sender, EventArgs e)
-        {
-            string nameTable = "[dbo].[Customers]";
-            string name = nameBox.Text;
-            int lengthMy = int.Parse(lengthMyBox.Text);
-            int widthMy = int.Parse(widthMyBox.Text);
-            int heightMy = int.Parse(heightMyBox.Text);
-            string statusMy = statusMyBox.Text;
-
-            string command = $"INSERT {nameTable} ([Name], [LengthMy], [WidthMy], [HeightMy], [StatusMy])\r\n" +
-                                        $"VALUES (N'{name}', {lengthMy}, {widthMy}, {heightMy},  N'{statusMy}')";
-
-            dataBase.OpenConnecton();
-            var sqlConnection = dataBase.GetConnection();
-            SqlCommand sqlCommand = new SqlCommand(command, sqlConnection);
-            sqlCommand.ExecuteNonQuery();
-            dataBase.CloseConnecton();
+            this.Hide();
+            AddAdoptedForm startForm = new AddAdoptedForm();
+            startForm.ShowDialog();
         }
     }
 }
