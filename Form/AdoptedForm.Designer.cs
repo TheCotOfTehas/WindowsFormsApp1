@@ -31,13 +31,11 @@
             this.GoToStart = new System.Windows.Forms.Button();
             this.Table = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.IdBox = new System.Windows.Forms.TextBox();
             this.nameBox = new System.Windows.Forms.TextBox();
             this.lengthMyBox = new System.Windows.Forms.TextBox();
             this.widthMyBox = new System.Windows.Forms.TextBox();
             this.heightMyBox = new System.Windows.Forms.TextBox();
             this.statusMyBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,13 +72,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.butto_Add);
             // 
-            // IdBox
-            // 
-            this.IdBox.Location = new System.Drawing.Point(44, 371);
-            this.IdBox.Name = "IdBox";
-            this.IdBox.Size = new System.Drawing.Size(100, 20);
-            this.IdBox.TabIndex = 4;
-            // 
             // nameBox
             // 
             this.nameBox.Location = new System.Drawing.Point(150, 370);
@@ -115,15 +106,6 @@
             this.statusMyBox.Name = "statusMyBox";
             this.statusMyBox.Size = new System.Drawing.Size(100, 20);
             this.statusMyBox.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 352);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Id";
             // 
             // label2
             // 
@@ -180,13 +162,11 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.statusMyBox);
             this.Controls.Add(this.heightMyBox);
             this.Controls.Add(this.widthMyBox);
             this.Controls.Add(this.lengthMyBox);
             this.Controls.Add(this.nameBox);
-            this.Controls.Add(this.IdBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Table);
             this.Controls.Add(this.GoToStart);
@@ -203,13 +183,11 @@
         private System.Windows.Forms.Button GoToStart;
         private System.Windows.Forms.DataGridView Table;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox IdBox;
         private System.Windows.Forms.TextBox nameBox;
         private System.Windows.Forms.TextBox lengthMyBox;
         private System.Windows.Forms.TextBox widthMyBox;
         private System.Windows.Forms.TextBox heightMyBox;
         private System.Windows.Forms.TextBox statusMyBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
